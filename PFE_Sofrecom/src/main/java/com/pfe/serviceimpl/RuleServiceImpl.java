@@ -182,7 +182,7 @@ public class RuleServiceImpl implements RuleService {
 //		  List<RuleEventDto>returnlistWithoutDuplicates = new ArrayList<>(
 //			      new HashSet<>(returnList));
 		return returnlistWithoutDuplicates;
-
+	
 	}
 
 	@Override
