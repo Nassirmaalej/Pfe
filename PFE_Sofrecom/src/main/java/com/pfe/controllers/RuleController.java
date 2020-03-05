@@ -2,6 +2,7 @@ package com.pfe.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,17 +17,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pfe.dto.RuleEventDto;
 import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
-import com.pfe.serviceimpl.regleserviceimpl;
+import com.pfe.serviceimpl.RuleServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/regle")
 
-public class regleController {
+public class RuleController {
 	@Autowired
-	private regleserviceimpl regleservice;
+	private RuleServiceImpl regleservice;
 	
 	@RequestMapping ( "/a" )
 	 String  home () {
@@ -35,12 +37,12 @@ public class regleController {
 	
 	
 	@GetMapping("/red")
-	public String redlog() throws IOException{
+	public List<RuleEventDto> redlog() throws IOException, TimeoutException{
 		
 	
 	              
-			  String data = regleservice.redlog();
-			  return data;
+			  List<RuleEventDto> T = regleservice.redlog();
+			  return T;
 			 
 					
 		
@@ -49,13 +51,10 @@ public class regleController {
 
 	
 	@GetMapping("/list")
-	public List<Rule> findAll() {
-		try {
+	public List<Rule> findAll() throws Exception {
+		
 			return regleservice.findAll();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;
+		
 		
 	}
 	
