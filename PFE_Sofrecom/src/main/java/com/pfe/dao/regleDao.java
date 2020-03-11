@@ -10,3 +10,4 @@ import com.pfe.entities.Rule;
 public interface regleDao extends JpaRepository <Rule ,Long > {
 
 }
+//
