@@ -75,7 +75,7 @@ public class RuleController {
 		for (i=0 ; i<x.size() ; i++)
 		{
 			
-			System.out.println("a"+ x.get(i).getType()) ;
+			System.out.println("xa"+ x.get(i).getType()) ;
 		if ( (x.get(i).getType() ).equals ("WriteRowsEventData") ) 
 			
 			
