@@ -42,7 +42,7 @@ public class RuleController {
 	
 	//
 
-	
+	//
 	
 	@GetMapping("/red")
 	public void redlog() throws Exception{

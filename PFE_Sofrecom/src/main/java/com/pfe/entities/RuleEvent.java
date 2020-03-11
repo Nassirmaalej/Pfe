@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//
+
 @Entity
 public class RuleEvent {
 	@Id
@@ -26,7 +26,7 @@ public class RuleEvent {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getLabel() {
+	public String getLabel() {          
 		return label;
 	}
 	public void setLabel(String label) {
@@ -46,3 +46,4 @@ public class RuleEvent {
 	}
 
 }
+//

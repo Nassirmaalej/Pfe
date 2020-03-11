@@ -33,4 +33,3 @@ public class RuleEventDto implements Serializable{
 	
 
 }
-//

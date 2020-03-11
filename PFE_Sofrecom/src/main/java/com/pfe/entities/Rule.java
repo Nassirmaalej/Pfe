@@ -213,5 +213,5 @@ public class Rule implements Serializable {
 	public void setTarget2(Target target2) {
 		this.target2 = target2;//
 	}
-
+//
 }
