@@ -1,7 +1,9 @@
+
 package com.pfe.serviceimpl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -24,11 +26,12 @@ import com.github.shyiko.mysql.binlog.event.EventData;
 import com.github.shyiko.mysql.binlog.event.TableMapEventData;
 import com.github.shyiko.mysql.binlog.event.UpdateRowsEventData;
 import com.github.shyiko.mysql.binlog.event.WriteRowsEventData;
-
+import com.pfe.dao.RuleEventDao;
 import com.pfe.dao.regleDao;
 import com.pfe.dto.RuleEventDto;
 import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
+import com.pfe.entities.RuleEvent;
 import com.pfe.service.RuleService;
 import com.pusher.rest.Pusher;
 import com.pfe.entities.Rule;
@@ -40,13 +43,31 @@ public class RuleServiceImpl implements RuleService {
 	private regleDao ruleDao;
 	private String res = "null";
 	private String data;
-	String T[] = new String[116];
+	String[] T = new String[116];
 	int i = 0;
+	List<RuleEvent> returnlistDao = new ArrayList<>();
+
+//	@Autowired
+	// private BinaryLogClient client;
+	@Autowired
+	private RuleEventDao ruleEventDao;
 
 	@Transactional
 	@Override
 	public StringResponse save(Rule rule) throws Exception {
 		ruleDao.save(rule);
+		return new StringResponse(true, "Ajout effecué");
+
+	}
+	
+
+	
+	
+
+	@Transactional
+	@Override
+	public StringResponse save(RuleEvent rule1) throws Exception {
+		ruleEventDao.save(rule1);
 		return new StringResponse(true, "Ajout effecué");
 
 	}
@@ -73,49 +94,61 @@ public class RuleServiceImpl implements RuleService {
 
 	}
 
-	public List<RuleEventDto> redlog() throws IOException, TimeoutException {
+	public List<RuleEvent> findAll1() throws Exception {
+		return ruleEventDao.findAll();
 
-		List<RuleEventDto> returnList = new ArrayList<>();
-		List<RuleEventDto> returnListfinal = new ArrayList<>();
-	
-		final Map<String, Long> tableMap = new HashMap<String, Long>();
+	}
+
+	public void redlog() throws IOException, TimeoutException {
 
 		BinaryLogClient client = new BinaryLogClient("localhost", 3306, "root", "");
+
+		List<RuleEventDto> returnList = new ArrayList<>();
+
+		List<RuleEventDto> returnlistWithoutDuplicates = new ArrayList<>();
+
+		final Map<Rule, Long> rule = new HashMap<Rule, Long>();
 
 		client.registerEventListener(event -> {
 			EventData data = event.getData();
 
-			if (data instanceof TableMapEventData) {
-				TableMapEventData tableData = (TableMapEventData) data;
-				tableMap.put(tableData.getTable(), tableData.getTableId());
-
-				System.out.println(data);
-
-				System.out.println("---hello1----");
-
-			}
-
-			else if (data instanceof WriteRowsEventData) {
+			if (data instanceof WriteRowsEventData) {
 				WriteRowsEventData eventData = (WriteRowsEventData) data;
 				System.out.println(data);
 				System.out.println("---hello2----");
-				
 
 				this.data = data.toString();
-				T[i] = this.data;
 
-				i++;
 				String a = this.data;
-				
+
 				try {
 					client.disconnect();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
+
+				if (a.length() > 113) {
+					RuleEvent RuleEvent = new RuleEvent();
+					RuleEvent.setType(a.substring(0, 18));
+					RuleEvent.setLabel("Evenement" + a);
+					RuleEvent.setDetail("[" + a.substring(113));
+
+					System.out.println(returnlistDao);
+					try {
+						client.disconnect();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					ruleEventDao.save(RuleEvent);
+
+				}
 
 			}
+
+			//
+			//
 
 			else if (data instanceof DeleteRowsEventData) {
 				DeleteRowsEventData eventData = (DeleteRowsEventData) data;
@@ -123,9 +156,9 @@ public class RuleServiceImpl implements RuleService {
 				System.out.println("---hello3----");
 
 				this.data = data.toString();
-				T[i] =   this.data;
 
-				i++;
+				String a = this.data;
+
 				try {
 					client.disconnect();
 				} catch (IOException e) {
@@ -133,6 +166,18 @@ public class RuleServiceImpl implements RuleService {
 					e.printStackTrace();
 				}
 
+				if (a.length() > 130)
+
+				{
+					RuleEvent RuleEvent = new RuleEvent();
+					RuleEvent.setType(a.substring(0, 19));
+					RuleEvent.setLabel("Evenement" + a);
+					RuleEvent.setDetail("[" + a.substring(113));
+
+					System.out.println(returnlistDao);
+
+					ruleEventDao.save(RuleEvent);
+				}
 			}
 
 			else if (data instanceof UpdateRowsEventData) {
@@ -140,9 +185,9 @@ public class RuleServiceImpl implements RuleService {
 				System.out.println(data);
 				System.out.println("---hello4----");
 				this.data = data.toString();
-				T[i] =  this.data;
 
-				i++;
+				 String a = this.data;
+
 				try {
 					client.disconnect();
 				} catch (IOException e) {
@@ -150,39 +195,37 @@ public class RuleServiceImpl implements RuleService {
 					e.printStackTrace();
 				}
 				
+				if (a.length() > 130) {
+					RuleEvent RuleEvent = new RuleEvent();
+					RuleEvent.setType(a.substring(0, 19));
+					RuleEvent.setLabel("Evenement" );
+					RuleEvent.setDetail("[" + a.substring(163));
+					System.out.println(returnlistDao);
+
+					ruleEventDao.save(RuleEvent);
+				}
+
 			}
 
 		});
 
-	
-			client.connect(100);
-	
+		client.connect(100);
 
-		String A[] = new String[i];
+		returnlistDao = new ArrayList<>(new HashSet<>(returnlistDao));
 
-		for (int j = 0; j < i; j++) {
-			RuleEventDto evenement = new RuleEventDto();
-			evenement.setType(T[j].substring(0, 31));
-			evenement.setLabel("Evenement"+ j);
-			evenement.setDetail("["+T[j].substring(112));
-			returnList.add(evenement);
-			
-//		  T[j]=T[j].substring( 0,  27) + T[j].substring(108);
+	}
 
-			A[j] = T[j];
+	public static Object[] supprimer_doublon(String[] args) {
 
-		}
+		List list = Arrays.asList(args);
+		Set set = new HashSet(list);
 
-		List<RuleEventDto> returnlistWithoutDuplicates = returnList.stream()
-			     .distinct()
-			     .collect(Collectors.toList());
-		// return new ResponseEntity<String>("Réponse du serveur:
-		// "+HttpStatus.OK.name(), HttpStatus.OK);
-		
-//		  List<RuleEventDto>returnlistWithoutDuplicates = new ArrayList<>(
-//			      new HashSet<>(returnList));
-		return returnlistWithoutDuplicates;
-	
+		System.out.print("Résultat de suppression des doublons: ");
+
+		Object[] result = new Object[set.size()];
+		set.toArray(result);
+
+		return result;
 	}
 
 	@Override
@@ -190,25 +233,25 @@ public class RuleServiceImpl implements RuleService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list) 
-    { 
-  
-        // Create a new ArrayList 
-        ArrayList<T> newList = new ArrayList<T>(); 
-  
-        // Traverse through the first list 
-        for (T element : list) { 
-  
-            // If this element is not present in newList 
-            // then add it 
-            if (!newList.contains(element)) { 
-  
-                newList.add(element); 
-            } 
-        } 
-  
-        // return the new list 
-        return newList; 
-    } 
+
+	public static <T> ArrayList<T> removeDuplicates(ArrayList<T> list) {
+
+		// Create a new ArrayList
+		ArrayList<T> newList = new ArrayList<T>();
+
+		// Traverse through the first list
+		for (T element : list) {
+
+			// If this element is not present in newList
+			// then add it
+			if (!newList.contains(element)) {
+
+				newList.add(element);
+			}
+		}
+
+		// return the new list
+		return newList;
+	}
 
 }

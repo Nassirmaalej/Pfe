@@ -2,13 +2,16 @@ package com.pfe.service;
 
 import java.awt.Event;
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 import org.springframework.http.ResponseEntity;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient.LifecycleListener;
+import com.pfe.dao.RuleEventDao;
 import com.pfe.dto.RuleEventDto;
 import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
+import com.pfe.entities.RuleEvent;
 
 public interface RuleService {
 
@@ -25,7 +28,9 @@ public interface RuleService {
 
 	public Rule findByOne(Long id) throws Exception;
 
-	public List<RuleEventDto>redlog() throws Exception;
+	public void redlog() throws Exception, TimeoutException;
 	// TODO Auto-generated method stub
+
+	StringResponse save(RuleEvent rule1) throws Exception;
 
 }

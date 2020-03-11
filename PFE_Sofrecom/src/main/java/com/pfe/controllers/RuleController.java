@@ -2,7 +2,10 @@ package com.pfe.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +20,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.pfe.dto.RuleEventDto;
 import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
+import com.pfe.entities.RuleEvent;
 import com.pfe.serviceimpl.RuleServiceImpl;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -33,22 +38,106 @@ public class RuleController {
 	@RequestMapping ( "/a" )
 	 String  home () {
 		 return  " Hello World! " ;
-	}
+	}			
+	
+	
+
 	
 	
 	@GetMapping("/red")
-	public List<RuleEventDto> redlog() throws IOException, TimeoutException{
+	public void redlog() throws Exception{
 		
 	
-	              
-			  List<RuleEventDto> T = regleservice.redlog();
-			  return T;
-			 
+				 regleservice.redlog();
+
+				
+				}
+			              
 					
 		
 		/* return new ResponseEntity<T>("Hello",HttpStatus.CREATED); */
+	
+	@GetMapping("/listrule")
+	public List<RuleEvent> findAll1() throws Exception {
+		
+			return regleservice.findAll1();
+		
+		
 	}
-
+	
+	
+	@GetMapping("/statx")
+	public int  statx() throws Exception {
+		int nbrx=0;
+		int i ;
+		List<RuleEvent> x =regleservice.findAll1();
+		System.out.println(x.get(0).getType()) ;
+		for (i=0 ; i<x.size() ; i++)
+		{
+			
+			System.out.println("a"+ x.get(i).getType()) ;
+		if ( (x.get(i).getType() ).equals ("WriteRowsEventData") ) 
+			
+			
+		{nbrx=nbrx+1;}
+		
+		}
+		
+	return nbrx;
+	
+		
+	}
+	
+	
+	
+	@GetMapping("/staty")
+	public int  staty() throws Exception {
+		int nbry=0;
+		int i ;
+		List<RuleEvent> x =regleservice.findAll1();
+		System.out.println(x.get(0).getType()) ;
+		for (i=0 ; i<x.size() ; i++)
+		{
+			
+			System.out.println("a"+ x.get(i).getType()) ;
+		if ( (x.get(i).getType() ).equals ("DeleteRowsEventData") ) 
+				
+		{nbry=nbry+1;}
+		
+		}
+		
+	return nbry;
+	
+		
+	}
+	
+	
+	
+	@GetMapping("/statz")
+	public int  statz() throws Exception {
+		int nbrz=0;
+		int i ;
+		List<RuleEvent> x =regleservice.findAll1();
+		System.out.println(x.get(0).getType()) ;
+		for (i=0 ; i<x.size() ; i++)
+		{
+			
+			System.out.println("a"+ x.get(i).getType()) ;
+		if ( (x.get(i).getType()) .equals ("UpdateRowsEventData") ) 
+			
+		{nbrz=nbrz+1;}
+		
+		}
+		
+	return nbrz;
+	
+		
+	}
+	
+	
+	
+	
+	
 	
 	@GetMapping("/list")
 	public List<Rule> findAll() throws Exception {
