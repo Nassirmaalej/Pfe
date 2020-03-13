@@ -34,6 +34,7 @@ import com.pfe.entities.Rule;
 import com.pfe.entities.RuleEvent;
 import com.pfe.service.RuleService;
 import com.pusher.rest.Pusher;
+import com.pusher.rest.data.Event;
 import com.pfe.entities.Rule;
 
 @Service
@@ -101,120 +102,129 @@ public class RuleServiceImpl implements RuleService {
 	}
 
 	public void redlog() throws IOException, TimeoutException {
-
-		BinaryLogClient client = new BinaryLogClient("localhost", 3306, "root", "");
-
-		List<RuleEventDto> returnList = new ArrayList<>();
-
-		List<RuleEventDto> returnlistWithoutDuplicates = new ArrayList<>();
-
-		final Map<Rule, Long> rule = new HashMap<Rule, Long>();
-
+	
+		 BinaryLogClient client =
+	              new BinaryLogClient("localhost", 3306, "root", "");
+		
+			
 		client.registerEventListener(event -> {
 			EventData data = event.getData();
-
-			if (data instanceof WriteRowsEventData) {
-				WriteRowsEventData eventData = (WriteRowsEventData) data;
-				System.out.println(data);
-				System.out.println("---hello2----");
-
-				this.data = data.toString();
-
-				String a = this.data;
-
-				try {
-					client.disconnect();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				if (a.length() > 113) {
-					RuleEvent RuleEvent = new RuleEvent();
-					RuleEvent.setType(a.substring(0, 18));
-					RuleEvent.setLabel("Evenement" + a);
-					RuleEvent.setDetail("[" + a.substring(113));
-
-					System.out.println(returnlistDao);
-					try {
+			if(data instanceof WriteRowsEventData) {
+                WriteRowsEventData eventData = (WriteRowsEventData)data;
+                
+            	this.data = eventData.toString();
+                 String a = this.data;
+                 System.out.println(a);
+                 
+                 if (a.length() > 113) {
+ 					RuleEvent RuleEvent = new RuleEvent();
+ 					RuleEvent.setType("Evenement d'insertion");
+ 					RuleEvent.setLabel("Evenement" + a.substring(0, 18));
+ 					RuleEvent.setDetail("Le tableau ajouté : [" + a.substring(113)); 
+ 					try {
 						client.disconnect();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					ruleEventDao.save(RuleEvent);
-
-				}
-
-			}
-
-			//
-			//
-
-			else if (data instanceof DeleteRowsEventData) {
-				DeleteRowsEventData eventData = (DeleteRowsEventData) data;
-				System.out.println(data);
-				System.out.println("---hello3----");
-
-				this.data = data.toString();
-
-				String a = this.data;
-
-				try {
-					client.disconnect();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				if (a.length() > 130)
-
-				{
-					RuleEvent RuleEvent = new RuleEvent();
-					RuleEvent.setType(a.substring(0, 19));
-					RuleEvent.setLabel("Evenement" + a);
-					RuleEvent.setDetail("[" + a.substring(113));
-
-					System.out.println(returnlistDao);
-
-					ruleEventDao.save(RuleEvent);
-				}
-			}
-
-			else if (data instanceof UpdateRowsEventData) {
-				UpdateRowsEventData eventData = (UpdateRowsEventData) data;
-				System.out.println(data);
-				System.out.println("---hello4----");
-				this.data = data.toString();
-
-				 String a = this.data;
-
-				try {
-					client.disconnect();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+ 					ruleEventDao.save(RuleEvent);    
+ 					try {
+						redlog() ;
+					} catch (IOException | TimeoutException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}}   
+                 
 				
-				if (a.length() > 130) {
-					RuleEvent RuleEvent = new RuleEvent();
-					RuleEvent.setType(a.substring(0, 19));
-					RuleEvent.setLabel("Evenement" );
-					RuleEvent.setDetail("[" + a.substring(163));
-					System.out.println(returnlistDao);
-
-					ruleEventDao.save(RuleEvent);
-				}
-
 			}
+			
+			if(data instanceof DeleteRowsEventData) {
+				DeleteRowsEventData eventData = (DeleteRowsEventData)data;
+                
+            	this.data = eventData.toString();
+                 String a = this.data;
+                 System.out.println(a);
+                 
+                 if (a.length() > 113) {
+ 					RuleEvent RuleEvent = new RuleEvent();
+ 					RuleEvent.setType("Evenement de suppression");
+ 					RuleEvent.setLabel("Evenement" + a.substring(0,19));
+ 					RuleEvent.setDetail("le tableau supprimé: [" + a.substring(113)); 
+ 					try {
+						client.disconnect();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+ 					ruleEventDao.save(RuleEvent);    
+ 					try {
+						redlog() ;
+					} catch (IOException | TimeoutException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}}   
+                         
+				
+			}
+			
+			
+			
+			if(data instanceof UpdateRowsEventData) {
+				UpdateRowsEventData eventData = (UpdateRowsEventData)data;
+                
+            	this.data = eventData.toString();
+                 String a = this.data;
+                 System.out.println(a);
+                 
+                 if (a.length() > 113) {
+ 					RuleEvent RuleEvent = new RuleEvent();
+ 					RuleEvent.setType("Evenement de modification");
+ 					RuleEvent.setLabel("Evenement" +a.substring(0, 19));
+ 					RuleEvent.setDetail("les modification [" + a.substring(189)); 
+ 					try {
+						client.disconnect();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+ 					ruleEventDao.save(RuleEvent);    
+ 					try {
+						redlog() ;
+					} catch (IOException | TimeoutException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}}   
+                         
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+           
+         }  ) ;
+		 
+		  
+		
+		
+		 client.connect();
+       
+		 
+         
+     }
+	        
 
-		});
-
-		client.connect(100);
-
-		returnlistDao = new ArrayList<>(new HashSet<>(returnlistDao));
-
-	}
+	
 
 	public static Object[] supprimer_doublon(String[] args) {
 

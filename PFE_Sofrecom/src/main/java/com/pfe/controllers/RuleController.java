@@ -41,8 +41,14 @@ public class RuleController {
 	}			
 	
 	//
-
 	//
+	
+	
+	
+	
+	
+	
+	
 	
 	@GetMapping("/red")
 	public void redlog() throws Exception{
@@ -53,7 +59,6 @@ public class RuleController {
 				
 				}
 			              
-					
 		
 		/* return new ResponseEntity<T>("Hello",HttpStatus.CREATED); */
 	
@@ -76,7 +81,8 @@ public class RuleController {
 		{
 			
 			System.out.println("xa"+ x.get(i).getType()) ;
-		if ( (x.get(i).getType() ).equals ("WriteRowsEventData") ) 
+		if ( (x.get(i).getType() ).equals ("Evenement d'insertion" 
+				) ) 
 			
 			
 		{nbrx=nbrx+1;}
@@ -100,7 +106,7 @@ public class RuleController {
 		{
 			
 			System.out.println("a"+ x.get(i).getType()) ;
-		if ( (x.get(i).getType() ).equals ("DeleteRowsEventData") ) 
+		if ( (x.get(i).getType() ).equals ("Evenement de suppression") ) 
 				
 		{nbry=nbry+1;}
 		
@@ -122,8 +128,8 @@ public class RuleController {
 		for (i=0 ; i<x.size() ; i++)
 		{
 			
-			System.out.println("a"+ x.get(i).getType()) ;
-		if ( (x.get(i).getType()) .equals ("UpdateRowsEventData") ) 
+			System.out.println("az"+ x.get(i).getType()) ;
+		if ( (x.get(i).getType()) .equals ("Evenement de modification") ) 
 			
 		{nbrz=nbrz+1;}
 		
