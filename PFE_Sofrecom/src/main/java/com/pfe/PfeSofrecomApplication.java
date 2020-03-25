@@ -1,8 +1,10 @@
 package com.pfe;
 
 import java.io.IOException;
+
 import java.text.MessageFormat;
 
+import org.apache.tomcat.util.threads.TaskThread;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,15 +18,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 
+
 @SpringBootApplication
 
 @RestController
 
+
 public class PfeSofrecomApplication {
 	
 
-	public static void main (String[] args) {
+	public static void main (String[] args) throws InterruptedException {
+		
+		
 		SpringApplication.run(PfeSofrecomApplication.class, args);
+		
 		
 		
 	}

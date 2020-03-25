@@ -121,6 +121,14 @@ public class RuleServiceImpl implements RuleService {
  					RuleEvent.setType("Evenement d'insertion");
  					RuleEvent.setLabel("Evenement" + a.substring(0, 18));
  					RuleEvent.setDetail("Le tableau ajouté : [" + a.substring(113)); 
+
+ 					String format = "dd/MM/yy";
+
+ 					java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+ 					java.util.Date date = new java.util.Date();
+
+ 					RuleEvent.setDate( formater.format( date ) );
+ 					
  					try {
 						client.disconnect();
 					} catch (IOException e) {
@@ -150,6 +158,12 @@ public class RuleServiceImpl implements RuleService {
  					RuleEvent.setType("Evenement de suppression");
  					RuleEvent.setLabel("Evenement" + a.substring(0,19));
  					RuleEvent.setDetail("le tableau supprimé: [" + a.substring(113)); 
+ 					String format = "dd/MM/yy";
+
+ 					java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+ 					java.util.Date date = new java.util.Date();
+
+ 					RuleEvent.setDate( formater.format( date ) );
  					try {
 						client.disconnect();
 					} catch (IOException e) {
@@ -181,6 +195,12 @@ public class RuleServiceImpl implements RuleService {
  					RuleEvent.setType("Evenement de modification");
  					RuleEvent.setLabel("Evenement" +a.substring(0, 19));
  					RuleEvent.setDetail("les modification [" + a.substring(189)); 
+ 					String format = "dd/MM/yy";
+
+ 					java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
+ 					java.util.Date date = new java.util.Date();
+
+ 					RuleEvent.setDate( formater.format( date ) );
  					try {
 						client.disconnect();
 					} catch (IOException e) {

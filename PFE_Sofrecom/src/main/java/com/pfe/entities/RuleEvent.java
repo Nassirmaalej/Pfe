@@ -1,5 +1,7 @@
 package com.pfe.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +20,15 @@ public class RuleEvent {
 	private String type;
 	@Column(name="DETAIL")
 	private String Detail ;
+	@Column(name="DATE")
+	private String date ;
 	
-	
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String string) {
+		this.date = string;
+	}
 	public int getId() {
 		return id;
 	}

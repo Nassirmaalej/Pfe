@@ -7,6 +7,7 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeoutException;
 import java.util.stream.Collectors;
 
+import org.apache.tomcat.util.threads.TaskThread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,127 +35,612 @@ import com.pfe.serviceimpl.RuleServiceImpl;
 public class RuleController {
 	@Autowired
 	private RuleServiceImpl regleservice;
-	
-	@RequestMapping ( "/a" )
-	 String  home () {
-		 return  " Hello World! " ;
-	}			
-	
-	//
-	//
-	
-	
-	
-	
-	
-	
-	
-	
-	@GetMapping("/red")
-	public void redlog() throws Exception{
-		
-	
-				 regleservice.redlog();
 
-				
-				}
-			              
-		
-		/* return new ResponseEntity<T>("Hello",HttpStatus.CREATED); */
-	
+	@RequestMapping("/a")
+	String home() {
+		return " Hello World! ";
+	}
+
+	//
+	//
+
+	@GetMapping("/red")
+	public void redlog() throws Exception {
+
+		regleservice.redlog();
+
+	}
+
+	/* return new ResponseEntity<T>("Hello",HttpStatus.CREATED); */
+
 	@GetMapping("/listrule")
 	public List<RuleEvent> findAll1() throws Exception {
-		
-			return regleservice.findAll1();
-		
-		
+
+		return regleservice.findAll1();
+
 	}
-	
-	
+
 	@GetMapping("/statx")
-	public int  statx() throws Exception {
-		int nbrx=0;
-		int i ;
-		List<RuleEvent> x =regleservice.findAll1();
-		System.out.println(x.get(0).getType()) ;
-		for (i=0 ; i<x.size() ; i++)
-		{
-			
-			System.out.println("xa"+ x.get(i).getType()) ;
-		if ( (x.get(i).getType() ).equals ("Evenement d'insertion" 
-				) ) 
-			
-			
-		{nbrx=nbrx+1;}
-		
+	public int statx() throws Exception {
+		int nbrx = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println("xa" + x.get(i).getType());
+			if ((x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbrx = nbrx + 1;
+			}
+
 		}
-		
-	return nbrx;
-	
-		
+
+		return nbrx;
+
 	}
-	
-	
-	
+
 	@GetMapping("/staty")
-	public int  staty() throws Exception {
-		int nbry=0;
-		int i ;
-		List<RuleEvent> x =regleservice.findAll1();
-		System.out.println(x.get(0).getType()) ;
-		for (i=0 ; i<x.size() ; i++)
-		{
-			
-			System.out.println("a"+ x.get(i).getType()) ;
-		if ( (x.get(i).getType() ).equals ("Evenement de suppression") ) 
-				
-		{nbry=nbry+1;}
-		
+	public int staty() throws Exception {
+		int nbry = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println("a" + x.get(i).getType());
+			if ((x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbry = nbry + 1;
+			}
+
 		}
-		
-	return nbry;
-	
-		
+
+		return nbry;
+
 	}
-	
-	
-	
+
 	@GetMapping("/statz")
-	public int  statz() throws Exception {
-		int nbrz=0;
-		int i ;
-		List<RuleEvent> x =regleservice.findAll1();
-		System.out.println(x.get(0).getType()) ;
-		for (i=0 ; i<x.size() ; i++)
-		{
-			
-			System.out.println("az"+ x.get(i).getType()) ;
-		if ( (x.get(i).getType()) .equals ("Evenement de modification") ) 
-			
-		{nbrz=nbrz+1;}
-		
+	public int statz() throws Exception {
+		int nbrz = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println("az" + x.get(i).getType());
+			if ((x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbrz = nbrz + 1;
+			}
+
 		}
-		
-	return nbrz;
-	
-		
+
+		return nbrz;
+
 	}
+
+	// les stat par moins
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+
+	@GetMapping("/statjan")
+	public int statjan() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("01"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statfev")
+	public int statfev() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("02"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statmar")
+	public int statmar() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("03"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statavr")
+	public int statavr() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("04"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statmai")
+	public int statmai() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("05"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statjui")
+	public int statjui() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("06"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statjul")
+	public int statjul() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("07"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statout")
+	public int statout() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("08"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statsep")
+	public int statsep() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("09"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statoct")
+	public int statoct() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("10"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statnov")
+	public int statnov() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("11"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdec")
+	public int statdec() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			System.out.println(x.get(i).getDate().subSequence(3, 5));
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("12"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	//////////////////////////////////////////// whrite/////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	
-	
-	
-	
-	
+	@GetMapping("/statwhritejan")
+	public int statwhritejan() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("01")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritefev")
+	public int statwhritefev() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("02")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritemar")
+	public int statwhritemar() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("03")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhriteavr")
+	public int statwhriteavr() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("04")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritemai")
+	public int statwhritemai() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("05")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritejui")
+	public int statwhritejui() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("06")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritejul")
+	public int statwhritejul() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("07")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhriteout")
+	public int statwhriteout() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("08")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritesep")
+	public int statwhritesep() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("09")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhriteoct")
+	public int statwhriteoct() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("10")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritenov")
+	public int statwhritenov() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("11")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statwhritedec")
+	public int statwhritedec() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("12")
+					&& (x.get(i).getType()).equals("Evenement d'insertion"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
 	@GetMapping("/list")
 	public List<Rule> findAll() throws Exception {
-		
-			return regleservice.findAll();
-		
-		
-	}
-	
 
-	
+		return regleservice.findAll();
+
+	}
+
 	@PostMapping("/add")
 	public StringResponse add(@RequestBody Rule regle) {
 		try {
@@ -164,7 +650,7 @@ public class RuleController {
 			return new StringResponse(false, "Ajout non effectué");
 		}
 	}
-	
+
 	@PutMapping("/update")
 	public StringResponse update(@RequestBody Rule regle) {
 		try {
@@ -174,8 +660,7 @@ public class RuleController {
 			return new StringResponse(false, "Modification non effectué");
 		}
 	}
-	
-	 
+
 	@DeleteMapping("/delete/{id}")
 	public StringResponse delete(@PathVariable("id") Long id) {
 		try {
@@ -186,6 +671,4 @@ public class RuleController {
 		}
 	}
 
-	
-	
 }
