@@ -189,6 +189,18 @@ public class RuleController {
 		return nbr;
 
 	}
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@GetMapping("/statavr")
 	public int statavr() throws Exception {
@@ -633,6 +645,287 @@ public class RuleController {
 		return nbr;
 
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////delete///////////////////////////////////////////////////////////
+	
+	
+
+	@GetMapping("/statdeletejan")
+	public int statdeletejan() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("01")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletefev")
+	public int statdeletefev() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("02")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletemar")
+	public int statdeletemar() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("03")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeleteavr")
+	public int statdeleteavr() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("04")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletemai")
+	public int statdeletemai() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("05")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletejui")
+	public int statdeletejui() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("06")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletejul")
+	public int statdeletejul() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("07")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeleteout")
+	public int statdeleteout() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("08")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletesep")
+	public int statdeletesep() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("09")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeleteoct")
+	public int statdeleteoct() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("10")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletenov")
+	public int statdeletenov() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("11")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statdeletedec")
+	public int statdeletedec() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		System.out.println(x.get(0).getType());
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("12")
+					&& (x.get(i).getType()).equals("Evenement de suppression"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@GetMapping("/list")
 	public List<Rule> findAll() throws Exception {
