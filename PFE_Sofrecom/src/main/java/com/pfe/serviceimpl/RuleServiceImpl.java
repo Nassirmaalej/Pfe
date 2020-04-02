@@ -117,6 +117,7 @@ public class RuleServiceImpl implements RuleService {
                  System.out.println(a);
                  
                  if (a.length() > 113) {
+                	 
  					RuleEvent RuleEvent = new RuleEvent();
  					RuleEvent.setType("Evenement d'insertion");
  					RuleEvent.setLabel("Evenement" + a.substring(0, 18));
@@ -216,27 +217,12 @@ public class RuleServiceImpl implements RuleService {
 					}}   
                          
 				
-			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			}	
 			
 			
            
          }  ) ;
-		 
-		  
-		
-		
+		 	
 		 client.connect();
        
 		 

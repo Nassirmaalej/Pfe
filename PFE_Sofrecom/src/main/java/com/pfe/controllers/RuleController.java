@@ -1,6 +1,7 @@
 package com.pfe.controllers;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -44,6 +45,8 @@ public class RuleController {
 	//
 	//
 
+	
+	//
 	@GetMapping("/red")
 	public void redlog() throws Exception {
 
@@ -55,7 +58,8 @@ public class RuleController {
 
 	@GetMapping("/listrule")
 	public List<RuleEvent> findAll1() throws Exception {
-
+	
+	    
 		return regleservice.findAll1();
 
 	}
@@ -65,10 +69,8 @@ public class RuleController {
 		int nbrx = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println("xa" + x.get(i).getType());
 			if ((x.get(i).getType()).equals("Evenement d'insertion"))
 
 			{
@@ -86,10 +88,8 @@ public class RuleController {
 		int nbry = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println("a" + x.get(i).getType());
 			if ((x.get(i).getType()).equals("Evenement de suppression"))
 
 			{
@@ -107,10 +107,8 @@ public class RuleController {
 		int nbrz = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println("az" + x.get(i).getType());
 			if ((x.get(i).getType()).equals("Evenement de modification"))
 
 			{
@@ -132,10 +130,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("01"))
 
 			{
@@ -153,10 +149,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("02"))
 
 			{
@@ -177,7 +171,6 @@ public class RuleController {
 
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("03"))
 
 			{
@@ -207,10 +200,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("04"))
 
 			{
@@ -228,10 +219,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("05"))
 
 			{
@@ -249,10 +238,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("06"))
 
 			{
@@ -270,10 +257,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("07"))
 
 			{
@@ -291,10 +276,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("08"))
 
 			{
@@ -312,10 +295,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("09"))
 
 			{
@@ -333,10 +314,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("10"))
 
 			{
@@ -354,10 +333,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("11"))
 
 			{
@@ -375,10 +352,8 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
-			System.out.println(x.get(i).getDate().subSequence(3, 5));
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("12"))
 
 			{
@@ -399,7 +374,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("01")
@@ -420,7 +394,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("02")
@@ -462,7 +435,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("04")
@@ -483,7 +455,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("05")
@@ -504,7 +475,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("06")
@@ -525,7 +495,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("07")
@@ -546,7 +515,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("08")
@@ -567,7 +535,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("09")
@@ -588,7 +555,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("10")
@@ -609,7 +575,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("11")
@@ -630,7 +595,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("12")
@@ -656,7 +620,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("01")
@@ -677,7 +640,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("02")
@@ -719,7 +681,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("04")
@@ -740,7 +701,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("05")
@@ -761,7 +721,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("06")
@@ -782,7 +741,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("07")
@@ -803,7 +761,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("08")
@@ -824,7 +781,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("09")
@@ -845,7 +801,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("10")
@@ -866,7 +821,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("11")
@@ -887,7 +841,6 @@ public class RuleController {
 		int nbr = 0;
 		int i;
 		List<RuleEvent> x = regleservice.findAll1();
-		System.out.println(x.get(0).getType());
 		for (i = 0; i < x.size(); i++) {
 
 			if ((x.get(i).getDate()).subSequence(3, 5).equals("12")
@@ -904,6 +857,259 @@ public class RuleController {
 	}
 
 
+	////////////////////////////////////////////////////////////Update///////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+
+	
+
+	@GetMapping("/statupdatejan")
+	public int statupdatejan() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("01")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatefev")
+	public int statupdatefev() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("02")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatemar")
+	public int statupdatemar() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("03")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdateavr")
+	public int statupdateavr() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("04")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatemai")
+	public int statupdatemai() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("05")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatejui")
+	public int statupdatejui() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("06")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatejul")
+	public int statupdatejul() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("07")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdateout")
+	public int statupdateout() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("08")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatesep")
+	public int statupdatesep() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("09")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdateoct")
+	public int statupdateoct() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("10")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatenov")
+	public int statupdatenov() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("11")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+
+	@GetMapping("/statupdatedec")
+	public int statupdatedec() throws Exception {
+		int nbr = 0;
+		int i;
+		List<RuleEvent> x = regleservice.findAll1();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getDate()).subSequence(3, 5).equals("12")
+					&& (x.get(i).getType()).equals("Evenement de modification"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	
+	
+	
+	//////////////
+	
 	
 
 	
