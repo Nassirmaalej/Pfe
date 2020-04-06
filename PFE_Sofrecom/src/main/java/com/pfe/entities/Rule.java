@@ -10,13 +10,14 @@ import java.util.Date;
  * 
  */
 @Entity
+
 @NamedQuery(name="Rule.findAll", query="SELECT r FROM Rule r")
 public class Rule implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+	private Long id;
 	
 	private String category;
 
@@ -78,11 +79,11 @@ public class Rule implements Serializable {
 	public Rule() {
 	}
 
-	public int getId() {
+	public Long getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
