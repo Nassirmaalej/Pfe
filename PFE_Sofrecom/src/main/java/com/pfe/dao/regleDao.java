@@ -18,7 +18,7 @@ import com.github.shyiko.mysql.binlog.event.WriteRowsEventData;
 import com.pfe.entities.Rule;
 import com.pfe.entities.RuleEvent;
 
-@Repository
+
 public interface regleDao extends JpaRepository <Rule ,Long > {
 
 	

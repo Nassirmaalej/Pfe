@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import com.github.shyiko.mysql.binlog.BinaryLogClient;
 import com.github.shyiko.mysql.binlog.BinaryLogClient.LifecycleListener;
@@ -46,6 +47,7 @@ public class RuleServiceImpl implements RuleService {
 	private String data;
 	String[] T = new String[116];
 	int i = 0;
+	int pos=0;
 	List<RuleEvent> returnlistDao = new ArrayList<>();
 
 //	@Autowired
@@ -129,7 +131,7 @@ public class RuleServiceImpl implements RuleService {
  					java.util.Date date = new java.util.Date();
 
  					RuleEvent.setDate( formater.format( date ) );
- 					
+ 	           
  					try {
 						client.disconnect();
 					} catch (IOException e) {
@@ -230,6 +232,217 @@ public class RuleServiceImpl implements RuleService {
      }
 	        
 
+	
+	
+	public int statpreCalcul() throws Exception {
+		int nbr = 0;
+		int i;
+		List<Rule> x = ruleDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+			if ((x.get(i).getCategory()).equals("preCalcul"))
+			{	nbr = nbr + 1;} }
+		return nbr;
+	}
+	
+	
+	public int statRouting() throws Exception {
+		int nbr = 0;
+		int i;
+		List<Rule> x = ruleDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getCategory()).equals("Routing"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	public int statParcours() throws Exception {
+		int nbr = 0;
+		int i;
+		List<Rule> x = ruleDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getCategory()).equals("Parcours"))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+     
+
+	
+	
+	
+	
+	public int statroutingupdate() throws Exception {
+		int nbr = 0;
+		int i;
+		String ch ="Routing";
+		List<RuleEvent> x = ruleEventDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getType()).equals("Evenement de modification") && (x.get(i).getDetail().indexOf(ch)>0))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	public int statParcoursupdate() throws Exception {
+		int nbr = 0;
+		int i;
+		String ch ="Parcours";
+		List<RuleEvent> x = ruleEventDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getType()).equals("Evenement de modification") && (x.get(i).getDetail().indexOf(ch)>0))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	
+	public int statpreCalculupdate() throws Exception {
+		int nbr = 0;
+		int i;
+		String ch ="preCalcul";
+		List<RuleEvent> x = ruleEventDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getType()).equals("Evenement de modification") && (x.get(i).getDetail().indexOf(ch)>0))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	public int statroutingdelete() throws Exception {
+		int nbr = 0;
+		int i;
+		String ch ="Routing";
+		List<RuleEvent> x = ruleEventDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getType()).equals("Evenement de suppression") && (x.get(i).getDetail().indexOf(ch)>0))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	public int statParcoursdelete() throws Exception {
+		int nbr = 0;
+		int i;
+		String ch ="Parcours";
+		List<RuleEvent> x = ruleEventDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getType()).equals("Evenement de suppression") && (x.get(i).getDetail().indexOf(ch)>0))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	
+	public int statpreCalculdelete() throws Exception {
+		int nbr = 0;
+		int i;
+		String ch ="preCalcul";
+		List<RuleEvent> x = ruleEventDao.findAll();
+		for (i = 0; i < x.size(); i++) {
+
+			if ((x.get(i).getType()).equals("Evenement de suppression") && (x.get(i).getDetail().indexOf(ch)>0))
+
+			{
+				nbr = nbr + 1;
+			}
+
+		}
+
+		return nbr;
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	public static Object[] supprimer_doublon(String[] args) {

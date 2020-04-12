@@ -54,7 +54,8 @@ public class RuleController {
 
 	
 	@PostMapping("/add")
-	public StringResponse add(@RequestBody Rule regle) {
+	
+	public StringResponse add( @RequestBody Rule regle) {
 		try {
 			return regleservice.save(regle);
 		} catch (Exception e) {
@@ -155,7 +156,90 @@ public class RuleController {
 		return regleservice.findAll1();
 
 	}
+	@GetMapping("/calculRouting")
+public int statRouting() throws Exception {
+		
+		return regleservice.statRouting();
+	}
+	
+	
+	@GetMapping("/calculpreCalcul")
 
+public int statpreCalcul() throws Exception {
+		
+		return regleservice.statpreCalcul();
+	}
+	
+	
+	
+	@GetMapping("/calculParcours")
+
+public int statParcours() throws Exception {
+		
+		return regleservice.statParcours();
+	}
+	
+	
+	
+	
+	@GetMapping("/statpreCalculupdate")
+
+public int statpreCalculupdate() throws Exception {
+		
+		return regleservice.statpreCalculupdate();
+	}
+	
+	
+	@GetMapping("/statroutingupdate")
+
+public int statRoutingupdate() throws Exception {
+		
+		return regleservice.statroutingupdate();
+	}
+	
+	@GetMapping("/statParcoursupdate")
+
+public int statParcoursupdate() throws Exception {
+		
+		return regleservice.statParcoursupdate();
+	}
+	
+	
+	
+	
+	
+	@GetMapping("/statpreCalculdelete")
+
+	public int statpreCalculdelete() throws Exception {
+			
+			return regleservice.statpreCalculdelete();
+		}
+		
+		
+		@GetMapping("/statroutingdelete")
+
+	public int statRoutingdelete() throws Exception {
+			
+			return regleservice.statroutingdelete();
+		}
+		
+		@GetMapping("/statParcoursdelete")
+
+	public int statParcoursdelete() throws Exception {
+			
+			return regleservice.statParcoursdelete();
+		}
+		
+		
+		
+		
+	
+	
+	
+	
+	
+	
+	
 	@GetMapping("/statx")
 	public int statx() throws Exception {
 		int nbrx = 0;
@@ -174,6 +258,16 @@ public class RuleController {
 		return nbrx;
 
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@GetMapping("/staty")
 	public int staty() throws Exception {
