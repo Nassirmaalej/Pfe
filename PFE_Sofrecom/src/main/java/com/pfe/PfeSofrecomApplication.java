@@ -35,8 +35,10 @@ import com.pfe.serviceimpl.RuleServiceImpl;
 @RestController
 
 
-public class PfeSofrecomApplication {
 
+public class PfeSofrecomApplication {
+	
+	
 
 	
 
@@ -49,8 +51,9 @@ public class PfeSofrecomApplication {
 		
 		//  RuleServiceImpl regleserviceimpl = new RuleServiceImpl();
 
-		  // regleserviceimpl.redlog() ;
-		
+		// regleserviceimpl.redlog() ;
+	
+
 	
 }
 

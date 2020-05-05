@@ -32,6 +32,18 @@ l.add( x.get(i).getLibelle());
 	return l ;
 	}
 
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	@Override
 	public StringResponse save(Site site) throws Exception {

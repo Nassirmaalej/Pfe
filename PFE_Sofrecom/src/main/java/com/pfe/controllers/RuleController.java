@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pfe.AuthConfig.AuthenticationBean;
 import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
 import com.pfe.entities.RuleEvent;
@@ -28,14 +26,18 @@ import com.pfe.serviceimpl.RuleServiceImpl;
 public class RuleController {
 	@Autowired
 	private RuleServiceImpl regleservice;
-//
-//	@GetMapping(path = "/basicauth")
-//    public AuthenticationBean basicauth() {
-//        return new AuthenticationBean ("You are authenticated");
-//    }
-//	
-    
+
+	@GetMapping(path = "/basicauth")
+    public StringResponse basicauth() {
+       return new StringResponse (true, "You are authenticated");
+    }
 	
+    
+	@GetMapping(produces = "application/json")
+	@RequestMapping({ "/validateLogin1" })
+	public StringResponse validateLogin1() {
+		return new StringResponse(true,"User successfully authenticated");
+	}
 	
 	
 	
@@ -70,7 +72,7 @@ public class RuleController {
 			return regleservice.update(regle);
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new StringResponse(false, "Modification non effectué");
+			return new StringResponse(false, "Modification  effectué");
 		}
 	}
 	
@@ -142,6 +144,11 @@ public class RuleController {
 
 	}
 
+
+	
+	
+	
+	
 	
 	@RequestMapping({ "/validateLogin" })
 	public String validateLogin() {
