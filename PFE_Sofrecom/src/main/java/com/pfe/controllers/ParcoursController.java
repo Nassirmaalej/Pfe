@@ -49,7 +49,7 @@ public class ParcoursController {
 		int i;
 		List<Parcour> x = parcourservice.findAll();
 		for (i = 0; i < x.size(); i++) {
-			if ((x.get(i).getLibelle().equals(" Parcours standard client VIP")))
+			if ((x.get(i).getLibelle().equals("Parcours standard client VIP")))
 			{	nbr = nbr + 1;}
 		}	return nbr;}
 	
@@ -74,7 +74,7 @@ public class ParcoursController {
 		int i;
 		List<Parcour> x = parcourservice.findAll();
 		for (i = 0; i < x.size(); i++) {
-			if ((x.get(i).getLibelle().equals(" Parcours standard langage naturel")))
+			if ((x.get(i).getLibelle().equals("Parcours standard langage naturel")))
 			{	nbr = nbr + 1;}
 		}	return nbr;}
 	

@@ -2,6 +2,8 @@ package com.pfe.controllers;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,8 +21,10 @@ import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
 import com.pfe.entities.RuleEvent;
 import com.pfe.serviceimpl.RuleServiceImpl;
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
+
 @RequestMapping("/regle")
 @ResponseBody
 public class RuleController {
@@ -41,7 +45,7 @@ public class RuleController {
 	
 	
 	
-	
+
 	@GetMapping("/liste")
 	public List<Rule> findAll() {
 		try {
@@ -137,6 +141,7 @@ public class RuleController {
 
 	 
 	//
+
 	@GetMapping("/red")
 	public void redlog() throws Exception {
 

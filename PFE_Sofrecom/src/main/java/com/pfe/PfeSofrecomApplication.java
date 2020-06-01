@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
+import javax.imageio.spi.RegisterableService;
+
 import org.apache.tomcat.util.threads.TaskThread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -16,6 +18,7 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,11 +33,12 @@ import com.pfe.dao.regleDao;
 import com.pfe.entities.RuleEvent;
 import com.pfe.service.RuleService;
 import com.pfe.serviceimpl.RuleServiceImpl;
-@SpringBootApplication
+
 
 @RestController
 
-
+@SpringBootApplication(scanBasePackages={
+"com.pfe", "com.example.application"})
 
 public class PfeSofrecomApplication {
 	
@@ -49,16 +53,20 @@ public class PfeSofrecomApplication {
 
 		SpringApplication.run(PfeSofrecomApplication.class, args);
 		
-		//  RuleServiceImpl regleserviceimpl = new RuleServiceImpl();
-
-		// regleserviceimpl.redlog() ;
+		/*
+		 * RuleServiceImpl regleserviceimpl = new RuleServiceImpl();
+		 * 
+		 * regleserviceimpl.redlog() ;
+		 */
+		
+		
+		
 	
-
+	
 	
 }
+	
 
-	
-	
 
 
 }

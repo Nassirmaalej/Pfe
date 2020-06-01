@@ -15,6 +15,8 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.event.EventListener;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -102,7 +104,7 @@ public class RuleServiceImpl implements RuleService {
 		return ruleEventDao.findAll();
 
 	}
-
+	@EventListener (ApplicationReadyEvent.class) 
 	public  void redlog() throws IOException, TimeoutException {
 	
 		 BinaryLogClient client =
@@ -123,7 +125,7 @@ public class RuleServiceImpl implements RuleService {
  					RuleEvent RuleEvent = new RuleEvent();
  					RuleEvent.setType("Evenement d'insertion");
  					RuleEvent.setLabel("Evenement" + a.substring(0, 18));
- 					RuleEvent.setDetail("LE TABLEAU AJOUTER : {[" + a.substring(113)); 
+ 					RuleEvent.setDetail("LE TABLEAU AJOUTER : {[" + a.substring(112)); 
 
  					String format = "dd/MM/yy";
 
@@ -160,7 +162,7 @@ public class RuleServiceImpl implements RuleService {
  					RuleEvent RuleEvent = new RuleEvent();
  					RuleEvent.setType("Evenement de suppression");
  					RuleEvent.setLabel("Evenement" + a.substring(0,19));
- 					RuleEvent.setDetail("LE TABLEAU SUPPRIME: [" + a.substring(113)); 
+ 					RuleEvent.setDetail("LE TABLEAU SUPPRIME: {[" + a.substring(113)); 
  					String format = "dd/MM/yy";
 
  					java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );
@@ -197,7 +199,7 @@ public class RuleServiceImpl implements RuleService {
  					RuleEvent RuleEvent = new RuleEvent();
  					RuleEvent.setType("Evenement de modification");
  					RuleEvent.setLabel("Evenement" +a.substring(0, 19));
- 					RuleEvent.setDetail("LES MODIFICATION [" + a.substring(189)); 
+ 					RuleEvent.setDetail("LES MODIFICATION {[" + a.substring(189)); 
  					String format = "dd/MM/yy";
 
  					java.text.SimpleDateFormat formater = new java.text.SimpleDateFormat( format );

@@ -34,10 +34,36 @@ public List<String> listeregion() throws Exception {
 	
 	
 	
+	@GetMapping("/region1")
+public int region1() throws Exception {
+			return siteservice.region1();
+	}
 	
 	
 	
+	@GetMapping("/region2")
+public int region2() throws Exception {
+			return siteservice.region2();
+	}
 	
+	
+	
+	@GetMapping("/region3")
+public int region3() throws Exception {
+			return siteservice.region3();
+	}
+	
+	
+	
+	@GetMapping("/region4")
+public int region4() throws Exception {
+			return siteservice.region4();
+	}
+	
+	@GetMapping("/region5")
+public int region5() throws Exception {
+			return siteservice.region5();
+	}
 	
 	
 //
