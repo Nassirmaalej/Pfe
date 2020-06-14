@@ -140,7 +140,9 @@ public class RuleServiceImpl implements RuleService {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
- 					ruleEventDao.save(RuleEvent);    
+ 					String ch="{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}";
+ 					if (a.indexOf(ch)>0)
+ 					{ruleEventDao.save(RuleEvent);    }
  					try {
 						redlog() ;
 					} catch (IOException | TimeoutException e) {
@@ -175,7 +177,9 @@ public class RuleServiceImpl implements RuleService {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
- 					ruleEventDao.save(RuleEvent);    
+ 					String ch="{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}";
+ 					if (a.indexOf(ch)>0)
+ 					{ruleEventDao.save(RuleEvent);}    
  					try {
 						redlog() ;
 					} catch (IOException | TimeoutException e) {
@@ -212,7 +216,9 @@ public class RuleServiceImpl implements RuleService {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
- 					ruleEventDao.save(RuleEvent);    
+ 					String ch="{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}";
+ 					if (a.indexOf(ch)>0)
+ 					{ruleEventDao.save(RuleEvent);   }
  					try {
 						redlog() ;
 					} catch (IOException | TimeoutException e) {

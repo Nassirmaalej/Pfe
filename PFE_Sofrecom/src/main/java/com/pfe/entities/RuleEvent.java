@@ -18,7 +18,7 @@ public class RuleEvent {
 	private String label;
 	@Column(name="TYPE")
 	private String type;
-	@Column(name="DETAIL", columnDefinition = "varchar(512)")
+	@Column(name="DETAIL", columnDefinition = "varchar(1512)")
 	private String Detail ;
 	@Column(name="DATE")
 	private String date ;

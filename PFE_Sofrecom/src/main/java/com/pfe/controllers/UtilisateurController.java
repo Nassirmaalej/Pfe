@@ -1,5 +1,6 @@
 package com.pfe.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.shyiko.mysql.binlog.BinaryLogClient;
+import com.github.shyiko.mysql.binlog.event.EventData;
 import com.pfe.dto.StringResponse;
 import com.pfe.entities.Rule;
 import com.pfe.entities.Utilisateur;
@@ -46,6 +49,18 @@ public class UtilisateurController {
 	@PostMapping("/add")
 	
 	public StringResponse add( @RequestBody Utilisateur utilisateur) {
+		BinaryLogClient client =
+	              new BinaryLogClient("localhost", 3306, "root", "");
+System.out.println("aaaaa");
+			
+		try {
+			client.disconnect();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
 		try {
 			return utilisateurservice.save(utilisateur);
 		} catch (Exception e) {
